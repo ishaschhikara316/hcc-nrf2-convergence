@@ -1,0 +1,57 @@
+# Manuscript drafts (kept private until submission)
+docs/paper/
+docs/manuscript.tex
+docs/paper.pdf
+docs/manuscript.pdf
+
+# Large public datasets (re-downloadable from source; see scripts/01_data_assembly.py)
+data/geo_new/
+data/xena_icgc/
+*.txt.gz
+*.tar.gz
+*.h5ad
+*.h5
+
+# Large model / intermediate artifacts (regeneratable from scripts)
+results/model/*.npz
+results/model/*.pkl
+results/model/*.joblib
+
+# Notebooks checkpoints
+.ipynb_checkpoints/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# R
+.Rhistory
+.RData
+.Rproj.user/
+*.Rproj
+
+# Editors / OS
+.claude/
+.cursor/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# Logs
+*.log

@@ -1,0 +1,8 @@
+model,c_index
+Archetype (univariate),0.6624477419947628
+Archetype + age + sex,0.6506529176504602
+ros_risk_score,0.6999127119033399
+alt_risk_score,0.6724399320071668
+nrf2_activity,0.6049983920613773
+ferroptosis_vulnerability,0.5145863003629347
+sting_score,0.5013093214499013

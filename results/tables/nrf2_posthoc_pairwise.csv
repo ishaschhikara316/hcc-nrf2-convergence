@@ -1,0 +1,13 @@
+group_1,group_2,metric,U_statistic,p_raw,p_bonferroni,significant
+A: Concordant High,B: Ferroptosis-dominant,nrf2_activity,2216.0,0.2776549872842523,1.0,False
+A: Concordant High,C: Hypoxia-dominant,nrf2_activity,4132.0,8.703680351134937e-11,5.222208210680962e-10,True
+A: Concordant High,D: Concordant Low,nrf2_activity,8529.0,7.162106870855135e-11,4.2972641225130806e-10,True
+B: Ferroptosis-dominant,C: Hypoxia-dominant,nrf2_activity,1949.0,1.7451151795428631e-10,1.047069107725718e-09,True
+B: Ferroptosis-dominant,D: Concordant Low,nrf2_activity,4136.0,7.835422733425651e-11,4.701253640055391e-10,True
+C: Hypoxia-dominant,D: Concordant Low,nrf2_activity,1847.0,0.01092976088493853,0.06557856530963119,False
+A: Concordant High,B: Ferroptosis-dominant,ferroptosis_vulnerability,2691.0,0.4301180612515455,1.0,False
+A: Concordant High,C: Hypoxia-dominant,ferroptosis_vulnerability,2039.0,0.07416272894127525,0.4449763736476515,False
+A: Concordant High,D: Concordant Low,ferroptosis_vulnerability,6124.0,0.25766765041935313,1.0,False
+B: Ferroptosis-dominant,C: Hypoxia-dominant,ferroptosis_vulnerability,810.0,0.02620239996640621,0.15721439979843727,False
+B: Ferroptosis-dominant,D: Concordant Low,ferroptosis_vulnerability,2478.0,0.9605722847282492,1.0,False
+C: Hypoxia-dominant,D: Concordant Low,ferroptosis_vulnerability,3200.0,0.005078674704028077,0.030472048224168463,True

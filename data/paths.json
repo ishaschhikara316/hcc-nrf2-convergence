@@ -1,0 +1,7 @@
+{
+  "expression_full": "/Users/shreesh/Dev/Github/Isha/hcc-ros-signature/data/tcga/tcga_lihc_expression_full.csv",
+  "clinical": "/Users/shreesh/Dev/Github/Isha/hcc-ros-signature/data/tcga/tcga_lihc_clinical.csv",
+  "ros_model": "/Users/shreesh/Dev/Github/Isha/hcc-ros-signature/results/model/lasso_model.json",
+  "alt_model": "/Users/shreesh/Dev/Github/Isha/hcc-altitude-signature/results/corrected/model/lasso_model_corrected.json",
+  "geo_cohorts": "/Users/shreesh/Dev/Github/Isha/hcc-ros-signature/data/geo_cohorts"
+}

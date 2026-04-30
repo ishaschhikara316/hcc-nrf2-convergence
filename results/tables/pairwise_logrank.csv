@@ -1,0 +1,7 @@
+group_1,group_2,n_1,n_2,events_1,events_2,chi2,p_value
+A: Concordant High,B: Ferroptosis-dominant,106,47,63,15,9.901776448636308,0.0016511930329405307
+A: Concordant High,C: Hypoxia-dominant,106,47,63,18,9.624425665199913,0.0019200648450142487
+A: Concordant High,D: Concordant Low,106,106,63,33,35.69222357111507,2.3108460618693256e-09
+B: Ferroptosis-dominant,C: Hypoxia-dominant,47,47,15,18,0.05825757083613099,0.8092714219657202
+B: Ferroptosis-dominant,D: Concordant Low,47,106,15,33,2.7152093648765896,0.09939592871517833
+C: Hypoxia-dominant,D: Concordant Low,47,106,18,33,4.035279847673928,0.04455828468736709

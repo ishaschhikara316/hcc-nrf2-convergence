@@ -1,0 +1,18 @@
+{
+  "model_name": "E: Cox(ROS+Alt+Interact)",
+  "features": [
+    "z_ros",
+    "z_alt",
+    "z_ros_x_alt"
+  ],
+  "coefficients": {
+    "z_ros": 0.692395263338375,
+    "z_alt": 0.3707393412001072,
+    "z_ros_x_alt": -0.1984321838401924
+  },
+  "c_index_train": 0.7176459778563881,
+  "c_index_cv": 0.7351968153851036,
+  "cv_std": 0.0850344667416393,
+  "perm_p": 0.0,
+  "aic": 1193.3396112043558
+}

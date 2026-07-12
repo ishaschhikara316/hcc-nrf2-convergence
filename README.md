@@ -2,14 +2,14 @@
 
 **Convergence of redox-vulnerability and altitude-adaptive hypoxia signatures reveals dual-axis patient stratification.**
 
-Most prognostic gene signatures in hepatocellular carcinoma (HCC) capture a single biological axis at a time — ferroptosis resistance, hypoxia adaptation, immune composition, or metabolic state. But real tumors run several of these programs in parallel, and the *interaction* between them is often what determines whether a patient lives years or months. Two patients with identical ferroptosis risk scores can have very different hypoxic adaptations, and vice versa. A signature that ignores the second axis will misclassify them.
+Most prognostic gene signatures in hepatocellular carcinoma (HCC) capture a single biological axis at a time: ferroptosis resistance, hypoxia adaptation, immune composition, or metabolic state. But real tumors run several of these programs in parallel, and the *interaction* between them is often what determines whether a patient lives years or months. Two patients with identical ferroptosis risk scores can have very different hypoxic adaptations, and vice versa. A signature that ignores the second axis will misclassify them.
 
-This project asks a deliberately simple question: **what happens when we apply two biologically distinct, independently validated HCC signatures to the same patients and ask who is high-risk on both at once?** The two signatures are taken unchanged from companion projects:
+This project asks a deliberately simple question: what happens when we apply two biologically distinct, independently validated HCC signatures to the same patients and ask who is high-risk on both at once? The two signatures are taken unchanged from companion projects:
 
 - An [11-gene ROS/ferroptosis signature](../hcc-ros-signature) capturing NRF2-KEAP1 antioxidant rewiring (C-index 0.700 in TCGA-LIHC).
 - A [9-gene altitude-adaptive signature](../hcc-altitude-signature) capturing hypoxia-adaptive metabolic reprogramming (C-index 0.672 in TCGA-LIHC).
 
-No new gene selection or model fitting is performed. Both signatures are applied as fixed-weight linear predictors to TCGA-LIHC (n=302) and three independent validation cohorts (n=565). What emerges is a coherent multi-axis picture in which **NRF2 transcriptional activity is the molecular keystone**, the **HMOX1/HMOX2 ratio** is a novel prognostic biomarker bridging the two axes, and **immune evasion proceeds through T-cell exhaustion rather than exclusion** — with direct implications for combining ferroptosis-inducing therapy with immune checkpoint blockade.
+No new gene selection or model fitting is performed. Both signatures are applied as fixed-weight linear predictors to TCGA-LIHC (n=302) and three independent validation cohorts (n=565). What emerges is a coherent multi-axis picture in which **NRF2 transcriptional activity is the central molecular node**, the **HMOX1/HMOX2 ratio** is a novel prognostic biomarker bridging the two axes, and **immune evasion proceeds through T-cell exhaustion rather than exclusion**, with direct implications for combining ferroptosis-inducing therapy with immune checkpoint blockade.
 
 ## What We Did
 
@@ -19,9 +19,9 @@ The two pre-existing risk scores are computed from cohort-z-scored gene expressi
 
 - A **ROS/ferroptosis risk score** (11 genes: TXNRD1, MAFG, G6PD, SQSTM1, SLC7A11, GSR, NCF2, HMOX1, GLRX2, BACH1, MSRA).
 - An **altitude-adaptive risk score** (9 genes: ARNT2, HMOX2, GRB2, GC, ITGA6, TBX5, HK2, LDHA, EPO).
-- A **combined dual-axis score** — the arithmetic mean of the two z-standardized risk scores.
+- A **combined dual-axis score** (the arithmetic mean of the two z-standardized risk scores).
 
-The two scores are moderately correlated (Spearman ρ = 0.48, p = 4.0 × 10⁻¹⁹) — enough overlap to confirm shared biology, enough independence to make their combination informative. Median splits on each score divide patients into a 2 × 2 grid:
+The two scores are moderately correlated (Spearman ρ = 0.48, p = 4.0 × 10⁻¹⁹): enough overlap to confirm shared biology, enough independence to make their combination informative. Median splits on each score divide patients into a 2 × 2 grid:
 
 | Group | Definition | n | Median OS (months) | 3-yr survival | 5-yr survival |
 |-------|-----------|---|-------------------:|--------------:|--------------:|
@@ -30,7 +30,7 @@ The two scores are moderately correlated (Spearman ρ = 0.48, p = 4.0 × 10⁻¹
 | C: Hypoxia-dominant | Low ROS + High Altitude | 47 | 48.9 | 58.1% | 36.2% |
 | **D: Concordant Low** | Low ROS + Low Altitude | 106 | **70.0** | 75.0% | 57.9% |
 
-**Group A vs Group D HR = 3.60 (2.34–5.54), p < 5 × 10⁻⁹. Four-group log-rank p = 3.9 × 10⁻⁹.** Pairwise tests show that the discordant groups B and C are statistically indistinguishable from each other (p = 0.81) but both are significantly different from A and D — confirming that the two axes capture different, additive biology.
+**Group A vs Group D HR = 3.60 (2.34–5.54), p < 5 × 10⁻⁹. Four-group log-rank p = 3.9 × 10⁻⁹.** Pairwise tests show that the discordant groups B and C are statistically indistinguishable from each other (p = 0.81) but both are significantly different from A and D. This confirms that the two axes capture different, additive biology.
 
 ### Combined Score Discrimination
 
@@ -52,12 +52,12 @@ We quantified NRF2 transcriptional activity as the mean z-score of 16 canonical 
 
 - NRF2 activity is **strongly correlated with the ROS risk score** (ρ = 0.59, p = 1.2 × 10⁻²⁹) and only weakly with the altitude score (ρ = 0.13, p = 0.028).
 - NRF2 activity is **highest in Group A and lowest in Group D** (Kruskal–Wallis p = 6.3 × 10⁻¹⁹).
-- NRF2 activity is **inversely correlated with ferroptosis vulnerability** (ρ = −0.22, p = 1.7 × 10⁻⁴) — high-NRF2 tumors are ferroptosis-resistant by construction.
+- NRF2 activity is **inversely correlated with ferroptosis vulnerability** (ρ = −0.22, p = 1.7 × 10⁻⁴): high-NRF2 tumors are ferroptosis-resistant by construction.
 - The score validates as a true NRF2 readout: positively correlated with NFE2L2 expression (ρ = 0.12, p = 0.034) and elevated in KEAP1-mutant tumors (ρ vs KEAP1 expression = 0.20, p = 5.4 × 10⁻⁴).
 
-NRF2 simultaneously drives ferroptosis resistance (via SLC7A11, TXNRD1, GSR), NADPH-mediated metabolic reprogramming (via G6PD), and immune modulation (via HMOX1-derived CO, biliverdin, and free iron). Computationally, it sits at the intersection of both signatures — a single transcription factor whose constitutive activation explains why concordant high-risk patients have such poor outcomes.
+NRF2 simultaneously drives ferroptosis resistance (via SLC7A11, TXNRD1, GSR), NADPH-mediated metabolic reprogramming (via G6PD), and immune modulation (via HMOX1-derived CO, biliverdin, and free iron). Computationally, it sits at the intersection of both signatures, a single transcription factor whose constitutive activation explains why concordant high-risk patients have such poor outcomes.
 
-### The HMOX1/HMOX2 Switch — A Novel Prognostic Biomarker
+### The HMOX1/HMOX2 Switch: A Novel Prognostic Biomarker
 
 The two signatures each contain one heme oxygenase isoform: **HMOX1** (inducible, NRF2-driven, present in the ROS signature as a risk gene) and **HMOX2** (constitutive, baseline expression, present in the altitude signature as a protective gene). Their ratio captures the degree to which a tumor has shifted from baseline to stress-induced heme metabolism.
 
@@ -65,11 +65,11 @@ The two signatures each contain one heme oxygenase isoform: **HMOX1** (inducible
 - The log₂(HMOX1/HMOX2) ratio is **highest in Group A** and independently predicts survival (univariate HR = 1.20, p = 0.001; multivariate HR = 1.20, p = 0.002 after adjusting for age and sex).
 - HMOX1 is **strongly correlated with immune checkpoint exhaustion markers**: HAVCR2/TIM-3 (ρ = 0.54, p = 2.6 × 10⁻²⁴), TIGIT (ρ = 0.48, p = 9.6 × 10⁻¹⁹), CTLA4 (ρ = 0.44, p = 3.6 × 10⁻¹⁶), PDCD1/PD-1 (ρ = 0.37, p = 3.3 × 10⁻¹¹), LAG3 (ρ = 0.32, p = 1.7 × 10⁻⁸), IDO1 (ρ = 0.31, p = 4.6 × 10⁻⁸).
 
-The HMOX1/HMOX2 axis is, to our knowledge, a novel prognostic readout in HCC. It captures a biologically interpretable shift — from baseline housekeeping heme catabolism to NRF2-driven, stress-responsive heme catabolism — that is also tightly coupled to T-cell exhaustion in the tumor microenvironment.
+The HMOX1/HMOX2 axis is, to our knowledge, a novel prognostic readout in HCC. It captures a biologically interpretable shift (from baseline housekeeping heme catabolism to NRF2-driven, stress-responsive heme catabolism) that is also tightly coupled to T-cell exhaustion in the tumor microenvironment.
 
 ### Immune Checkpoint Exhaustion, Not Exclusion
 
-A central finding of the project is that NRF2-high HCC does *not* look immunologically cold. HMOX1-high tumors have **higher**, not lower, expression of T-cell markers (CD8A ρ = 0.45, IFNG ρ = 0.40, CD4 ρ = 0.39, NKG7 ρ = 0.38) — alongside markedly elevated checkpoint expression. This is the hallmark of T-cell **exhaustion**: the immune system is recruited but functionally disabled.
+A central finding of the project is that NRF2-high HCC does *not* look immunologically cold. HMOX1-high tumors have **higher**, not lower, expression of T-cell markers (CD8A ρ = 0.45, IFNG ρ = 0.40, CD4 ρ = 0.39, NKG7 ρ = 0.38), alongside markedly elevated checkpoint expression. This is the hallmark of T-cell **exhaustion**: the immune system is recruited but functionally disabled.
 
 Across the four dual-axis groups, 6 of 9 immune checkpoints differed significantly (BH-FDR < 0.01):
 
@@ -82,7 +82,7 @@ Across the four dual-axis groups, 6 of 9 immune checkpoints differed significant
 | **TIGIT** | A & C | p = 0.0038 (q = 0.0057) |
 | **SIGLEC15** | C & D (depleted in A) | p = 1.8 × 10⁻⁴ (q = 5.4 × 10⁻⁴) |
 
-Clinically, exhaustion is a *treatable* state — checkpoint inhibitors are designed exactly to rescue exhausted T cells. Exclusion, by contrast, leaves checkpoint inhibitors with nothing to rescue. The dual-axis framework predicts that concordant high-risk patients (Group A) have the immunological substrate to respond to ICB, *if* the underlying NRF2-driven antioxidant defenses are simultaneously disrupted (e.g., by ferroptosis induction).
+Clinically, exhaustion is a *treatable* state: checkpoint inhibitors are designed exactly to rescue exhausted T cells. Exclusion, by contrast, leaves checkpoint inhibitors with nothing to rescue. The dual-axis framework predicts that concordant high-risk patients (Group A) have the immunological substrate to respond to ICB, *if* the underlying NRF2-driven antioxidant defenses are simultaneously disrupted (e.g., by ferroptosis induction).
 
 ### Patient Archetypes from Consensus Clustering
 
@@ -110,7 +110,7 @@ Both signatures were applied to three independent cohorts using cohort-specific 
 | GSE76427 | Singaporean | Illumina | 115 | 23 | 0.489 | 1.27 | NS | Underpowered (only 23 OS events) |
 | GSE10141 | European | Affymetrix | 80 | 32 | 0.424 | — | NS | Underpowered, mixed direction |
 
-**Fisher combined p across validation cohorts = 1.7 × 10⁻⁴.** Effect direction (HR > 1 in high-risk) is consistent across all well-powered cohorts, despite differences in etiology (HBV-dominant in GSE14520, mixed in LIRI-JP) and platform (microarray vs RNA-seq). The two underpowered European/Asian cohorts (GSE76427, GSE10141) are unable to detect the effect — the same limitation reported in both companion papers.
+**Fisher combined p across validation cohorts = 1.7 × 10⁻⁴.** Effect direction (HR > 1 in high-risk) is consistent across all well-powered cohorts, despite differences in etiology (HBV-dominant in GSE14520, mixed in LIRI-JP) and platform (microarray vs RNA-seq). The two underpowered European/Asian cohorts (GSE76427, GSE10141) are unable to detect the effect, the same limitation reported in both companion papers.
 
 ### Therapeutic Stratification by Archetype
 
@@ -132,7 +132,7 @@ This produces a falsifiable, archetype-matched treatment rationale:
 - **Cold-Quiescent**: highest VEGFA → standard-of-care anti-angiogenic TKIs (sorafenib, lenvatinib).
 - **HMOX2-Driven**: relatively protective baseline, intermediate prognosis → standard of care.
 
-Decision curve analysis on the dual-axis model shows positive net benefit across clinically relevant risk thresholds, indicating that using the framework to guide treatment decisions would improve outcomes compared to a treat-all or treat-none strategy.
+Decision curve analysis on the dual-axis model shows positive net benefit across clinically relevant risk thresholds, which indicates that using the framework to guide treatment decisions would improve outcomes compared to a treat-all or treat-none strategy.
 
 ## Repository Structure
 
@@ -181,9 +181,9 @@ Scripts read the cached LASSO coefficients from `../hcc-ros-signature/results/mo
 ## Key Takeaways
 
 1. **Dual-axis convergence beats either single signature.** Combining the ROS/ferroptosis and altitude-adaptive signatures lifts the C-index from 0.700 (best single) to 0.715, and the four-group stratification (HR 3.6 for concordant high vs concordant low) is far more clinically actionable than a single risk threshold.
-2. **NRF2 is the mechanistic keystone.** A 16-gene NRF2 activity score is highest precisely where outcomes are worst, and inversely correlated with ferroptosis vulnerability — a single transcription factor links antioxidant rewiring, hypoxia adaptation, and immune evasion.
+2. **NRF2 is the central driver.** A 16-gene NRF2 activity score is highest precisely where outcomes are worst, and inversely correlated with ferroptosis vulnerability: a single transcription factor links antioxidant rewiring, hypoxia adaptation, and immune evasion.
 3. **The HMOX1/HMOX2 switch is a novel prognostic biomarker.** The shift from constitutive to stress-induced heme oxygenase predicts survival independently of clinical covariates and tracks T-cell exhaustion markers tightly.
-4. **Immune evasion in NRF2-high HCC is exhaustion, not exclusion.** This matters therapeutically — exhausted T cells can be rescued by checkpoint inhibitors, while excluded T cells cannot.
+4. **Immune evasion in NRF2-high HCC is exhaustion, not exclusion.** This matters therapeutically: exhausted T cells can be rescued by checkpoint inhibitors, while excluded T cells cannot.
 5. **Treatment hypotheses fall out naturally from the archetype map.** NRF2-Dominant tumors are predicted-sensitive to ferroptosis inducers, Immune-Active tumors to ICB monotherapy, Cold-Quiescent tumors to anti-angiogenic TKIs.
 6. **Validation holds across ethnically distinct cohorts** (Chinese HBV, Japanese mixed; Fisher combined p = 1.7 × 10⁻⁴), with the same underpowered-cohort caveat that affects both companion signatures.
 
@@ -191,7 +191,7 @@ Scripts read the cached LASSO coefficients from `../hcc-ros-signature/results/mo
 
 - All analyses are computational; no wet-lab experimental validation of the NRF2 → ferroptosis → immune-exhaustion links.
 - ICGC LIRI-JP validation is ROS-only because altitude-signature genes were not all available on the cached platform.
-- GSE76427 (23 events) and GSE10141 (32 events, mixed-direction) are underpowered — a known limitation shared with both companion papers.
+- GSE76427 (23 events) and GSE10141 (32 events, mixed-direction) are underpowered, a known limitation shared with both companion papers.
 - TCGA-LIHC clinical stage is sparsely annotated and was excluded from multivariate models where unavailable.
 - The 2 × 2 median-split is standard and reproducible but is not guaranteed to be the optimal cutpoint in every population.
 - The NRF2–STING anticorrelation initially hypothesized was not significant (ρ = 0.07, p = 0.20). The immune-evasion mechanism that *did* emerge from the data is checkpoint exhaustion, not STING suppression.
@@ -216,9 +216,9 @@ Scripts read the cached LASSO coefficients from `../hcc-ros-signature/results/mo
 
 This project is the third of three companion analyses by the same author:
 
-1. [hcc-ros-signature](../hcc-ros-signature) — 11-gene ROS/ferroptosis prognostic signature.
-2. [hcc-altitude-signature](../hcc-altitude-signature) — 9-gene altitude-adaptive hypoxia signature.
-3. **hcc-nrf2-convergence** *(this project)* — Dual-axis convergence framework integrating both.
+1. [hcc-ros-signature](../hcc-ros-signature): 11-gene ROS/ferroptosis prognostic signature.
+2. [hcc-altitude-signature](../hcc-altitude-signature): 9-gene altitude-adaptive hypoxia signature.
+3. **hcc-nrf2-convergence** *(this project)*: Dual-axis convergence framework integrating both.
 
 Portfolio: [ishaschhikara316.github.io/isha](https://ishaschhikara316.github.io/isha)
 

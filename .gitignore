@@ -55,3 +55,16 @@ Thumbs.db
 
 # Logs
 *.log
+
+# AI assistant / editor config
+.claude/
+.mcp.json
+.cursorrules
+.windsurfrules
+.opencode.json
+CLAUDE.md
+AGENTS.md
+GEMINI.md
+
+# Manuscript / paper artifacts (kept out of public repo)
+docs/
